@@ -49,28 +49,52 @@
 
 <header class=" ">
   <div class=" border-primary bg-gradient-to-r from-white to-blue-500 ms-auto flex flex-col justify-center items-center">
-    <h2 class=" mx-auto mt-16 font-serif text-xl font-bold">Study Leave Application System</h2>
+    <h2 class=" mx-auto mt-16 font-serif text-xl font-bold ">Study Leave Application System</h2>
     <div class="h-4/5 w-2/3 mb-16 shadow-2xl bg-gradient-to-r from-blue-300 to-white  flex flex-col justify-center items-center rounded my-5">
-       <input type="email"  name="email" id="email"  placeholder="Email"  class="input input-bordered input-info w-full max-w-[50%] my-5 required  rounded-lg" />
-      <input type="text" name="password" id="password"  placeholder="Password" class="input input-bordered input-info w-full max-w-[50%] required rounded-lg" />
       
-      <div class="dropdown dropdown-hover">
-    <input type="text"   placeholder="Role" class="input input-bordered input-info w-full max-w-[100%] my-5 rounded-lg" />
-    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box max-w-[100%]">
-    <li><a class="font-semibold ">Applicant</a></li>
-    <li><a class="font-semibold ">Evaluator</a></li>
+<form class="">
+  <div class="mb-6 mt-5">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+    <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@site.com" required>
+  </div>
+  <div class="mb-6">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+    <input type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+  </div>
+  <div class="mb-6">
+    <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
+    <input type="password" id="repeat-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+  </div>
+
+  <!-- Dropdown menu -->
+  <button id="dropdownRadioButton" data-dropdown-toggle="dropdownDefaultRadio" class=" order-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Role <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+<div id="dropdownDefaultRadio" class=" z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+  <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
+    <li>
+      <div class="flex items-center">
+          <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+          <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Applicant</label>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center">
+          <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+          <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Evaluator</label>
+      </div>
+    </li>
   </ul>
 </div>
 
-      <div class="flex my-8 gap-10">
-        <button class="btn btn-outline btn-primary">Log IN</button>
-        <button class="btn btn-outline btn-primary">Reset</button>
-      </div>
-      <div class="text-xl font-medium text-gray-500 dark:text-gray-300 py-10">
-        Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
-    </div>
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log In</button>
+ 
 
-    </div>
+</form>
+
+<div class="text-xl font-medium text-gray-500 dark:text-gray-300 py-10">
+        Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+</div>
+
+</div>
 
 
   </div>
