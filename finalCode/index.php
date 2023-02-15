@@ -26,7 +26,7 @@
 
 
 
-<form action="\CU_NOC\finalcode\" method="post" class="">
+<form action="\CU_NOC\finalCode\" method="post" class="">
   <div class="mb-6 mt-5">
   <?php
 if ($showError==true)
