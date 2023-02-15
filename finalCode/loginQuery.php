@@ -13,6 +13,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     
     $id=$row['ID'];
     $name=$row['Name'];
+    $user_type=$row['user_type'];
+    $dept=$row['Department'];
     if($num==1){
         
                 $login=true;
@@ -21,8 +23,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $_SESSION['id'] = $id;
                 $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
-                header("location: applicant.php");
-
+                $_SESSION['user_type'] = $user_type;
+                $_SESSION['dept'] = $dept;
+                if($user_type=='Teacher') header("location: applicant.php");
+                else if($user_type=='Chairman') header("location: chairman.php");
     }
     else {
         $showError = "Invalid Email or Password";
