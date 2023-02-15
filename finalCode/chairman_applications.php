@@ -5,14 +5,15 @@ $dept=$_SESSION['dept'];
 include 'db_connect.php';
 
 
-$sqlQuery="SELECT s.Name_of_Program FROM study_leave_application s,evaluates e, user u WHERE s.leave_id=e.leave_id AND s.applicant_id=u.ID AND u.Department='$dept' AND e.status='Pending' AND e.evaluation_type='Chairman'";
+$sqlQuery="SELECT s.Name_of_Program,s.Leave_ID FROM study_leave_application s,evaluates e, user u WHERE s.leave_id=e.leave_id AND s.applicant_id=u.ID AND u.Department='$dept' AND e.status='Pending' AND e.evaluation_type='Chairman'";
 $result= mysqli_query($connection,$sqlQuery);
 while($row = mysqli_fetch_assoc($result)){
     $ans=$row['Name_of_Program'];
+    $ans2=$row['Leave_ID'];
    echo ' <div class="grid grid-cols-6 gap-3">
   <div class="col-start-2 col-span-4">
     <a href="chairman_confirmation.php?id2=';
-    echo  $ans ;
+    echo  $ans2 ;
     echo '" class="block w-9/10 p-2 bg-gradient-to-r from-blue-500 to-black rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <div class="flex flex-row justify-between items-center">
       <img class="w-8 h-8 rounded-full" src="./images/leave.png" alt="">
