@@ -31,7 +31,7 @@
             $email=mysqli_real_escape_string($connection,$_POST['user_email']);
             $password=mysqli_real_escape_string($connection,$_POST['user_password']);
             $username = mysqli_real_escape_string($connection,$_POST['first_name']) . " " . mysqli_real_escape_string($connection,$_POST['last_name']);
-            $sqlQuery="INSERT INTO user( `Name`, `Email`, `Password`, `Department`) VALUES ('$username', '$email', '$pass', '$department')";
+            $sqlQuery="INSERT INTO user( `Name`, `Email`, `Password`, `Department`, `user_type`) VALUES ('$username', '$email', '$pass', '$department','Teacher')";
             
             if(mysqli_query($connection,$sqlQuery)){
                 header('Location: index.php');

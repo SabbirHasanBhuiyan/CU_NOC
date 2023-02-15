@@ -29,6 +29,9 @@ echo '<nav class=" navbar bg-base-100 bg-gradient-to-r from-blue-500 to-white px
         <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"> ';
          echo $_SESSION['email']; 
         echo '</span>
+        <span class="block text-sm text-gray-900 dark:text-white">';
+        echo $_SESSION['user_type'];
+        echo ' </span>
       </div>
       <ul class="py-2" aria-labelledby="user-menu-button">
         <li>
