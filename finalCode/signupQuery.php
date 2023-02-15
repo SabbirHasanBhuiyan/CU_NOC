@@ -1,7 +1,7 @@
 <?php
     include 'db_connect.php';
     $errors= array('email'=>'','password'=>'');
-    $email=$pass=$department=$confirmPass=$fName=$lName=$department='';
+    $email=$pass=$confirmPass=$fName=$lName=$department='';
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $email = $_POST["user_email"];
