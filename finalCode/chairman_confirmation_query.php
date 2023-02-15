@@ -16,7 +16,12 @@ $row = mysqli_fetch_assoc($result);
     $app_id=$row['applicant_id'];
     $file_name=$row['Attachments'];
     
+    $sqlQuery2="SELECT * from user where ID='$app_id' ";
+    $result2= mysqli_query($connection,$sqlQuery2);
+    $row2 = mysqli_fetch_assoc($result2);
 
+    $app_name=$row2['Name'];
+    $app_dept=$row2['Department'];
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     include 'db_connect.php';

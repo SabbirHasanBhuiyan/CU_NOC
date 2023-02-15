@@ -5,10 +5,10 @@ $dept=$_SESSION['dept'];
 include 'db_connect.php';
 
 
-$sqlQuery="SELECT e.Leave_id FROM study_leave_application s,evaluates e, user u WHERE s.leave_id=e.leave_id AND s.applicant_id=u.ID AND u.Department='$dept' AND e.status='Pending' AND e.evaluation_type='Chairman'";
+$sqlQuery="SELECT s.Name_of_Program FROM study_leave_application s,evaluates e, user u WHERE s.leave_id=e.leave_id AND s.applicant_id=u.ID AND u.Department='$dept' AND e.status='Pending' AND e.evaluation_type='Chairman'";
 $result= mysqli_query($connection,$sqlQuery);
 while($row = mysqli_fetch_assoc($result)){
-    $ans=$row['Leave_id'];
+    $ans=$row['Name_of_Program'];
    echo ' <div class="grid grid-cols-6 gap-3">
   <div class="col-start-2 col-span-4">
     <a href="chairman_confirmation.php?id2=';
