@@ -1,9 +1,10 @@
 <?php
 session_start();
 include 'db_connect.php';
-if(isset($_GET['id2'])){ 
-    $id2=$_GET['id2'];
-    $sqlQuery="SELECT * from study_leave_application where leave_id='$id2' ";
+$id;
+if(isset($_GET['id'])){ 
+    $id=$_GET['id'];
+    $sqlQuery="SELECT * from study_leave_application where leave_id='$id' ";
     $result= mysqli_query($connection,$sqlQuery);
     $row = mysqli_fetch_assoc($result);
 
@@ -25,7 +26,7 @@ if(isset($_GET['id2'])){
     $app_dept=$row2['Department'];
 }
 
-    
+    $id2=$_GET['id'];
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $comment = $_POST["comment"];
         if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){

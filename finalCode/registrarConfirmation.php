@@ -26,7 +26,7 @@
    </div>
       </header>
     
-<form class="mx-10 my-10 p-10" action="registrarConfirmation.php" method="post">
+<form class="mx-10 my-10 p-10" action="registrarConfirmation.php?id=<?php echo $id?>" method="post">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
     <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Applicant Name</label>
