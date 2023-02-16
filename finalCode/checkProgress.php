@@ -23,7 +23,7 @@
       <li class="step <?php if($assignedToDept){?> step-info <?php } ?> font-serif  text-white">Assigned To Different Department CU</li>
       <li class="step <?php if($registerSecondaryApproval){?> step-info <?php } ?> font-serif  text-white">Register Second Approval</li>
       <li class="step <?php if($VCApproval){?> step-info <?php } ?> font-serif  text-white">Vice Chancellor Office</li>
-      <li class="step <?php if($$registerFinalApproval){?> step-info <?php } ?> font-serif  text-white">Register Final Approval</li>
+      <li class="step <?php if($registerFinalApproval){?> step-info <?php } ?> font-serif  text-white">Register Final Approval</li>
       <li class="step <?php if($higherStudyBranchFinalApproval){?> step-info <?php } ?> font-serif text-white" >Higher Study Branch CU Final Approval</li>
     </ul>
   </div>
