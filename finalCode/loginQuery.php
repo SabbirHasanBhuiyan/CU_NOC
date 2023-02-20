@@ -28,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 if($user_type=='Teacher') header("location: applicant.php");
                 else if($user_type=='Chairman') header("location: chairman.php");
                 else if($user_type=="Registrar") header("location: registrar.php");
+                else if($user_type=='HigherStudies')header("location: HigherStudies.php");
     }
     else {
         $showError = "Invalid Email or Password";
