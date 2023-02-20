@@ -36,6 +36,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         $result3= mysqli_query($connection,$sqlQuery3);
 
+        // Query For Sending Mail 
+        $mail_finding_query="SELECT * from user where user_type='Registrar' ";
+        $mail_finding_result= mysqli_query($connection,$mail_finding_query);
+        $mail_finding_row=mysqli_fetch_assoc($mail_finding_result);
+        $rec_add=$mail_finding_row['Email'];
+        $rec_name=$mail_finding_row['Name'];
+         require 'sendmail.php' ;
+        $mail->addAddress($rec_add);
+
+        $mail->Subject="Evaluation Required for NOC";
+        $mail->Body="Hello ".$rec_name.", An Application for Study Leave is awaiting your approval. Please Visit NOC Website to send Your valuable Response. Thank You.";
+        $mail->send();
+
+
+
         header("location: chairman.php");
       }
 

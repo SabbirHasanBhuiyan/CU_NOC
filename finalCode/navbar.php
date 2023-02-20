@@ -10,7 +10,7 @@ else{
 
 echo '<nav class=" navbar bg-base-100 bg-gradient-to-r from-blue-500 to-white px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
 <div class="container flex flex-wrap items-center justify-between mx-auto">
-<a href="https://flowbite.com/" class="flex items-center">
+<a href="index.php" class="flex items-center">
     <img src="./images/logo.png" class="h-12 w-8 mr-3 sm:h-9" alt="CU Logo" />
     <span class="self-center text-2xl text-white font-serif font-bold  dark:text-white">University Of Chittagong</span>
 </a>';
