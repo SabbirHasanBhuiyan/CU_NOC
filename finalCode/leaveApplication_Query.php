@@ -36,7 +36,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Chairman', '$leave_id', '$app_id', 'Pending', CURRENT_TIME(), '');";
 
+        
+
+        // Query For Sending Mail 
+
         $result2= mysqli_query($connection,$sqlQuery2);
+        $dept_finding_query="SELECT * from user where id='$app_id'";
+        $dept_finding_result= mysqli_query($connection,$dept_finding_query);
+        $dept_finding_row=mysqli_fetch_assoc($dept_finding_result);
+        $app_dept=$dept_finding_row['Department'];
+        
+        $mail_finding_query="SELECT * from user where Department='$app_dept' AND user_type='Chairman' ";
+        $mail_finding_result= mysqli_query($connection,$mail_finding_query);
+        $mail_finding_row=mysqli_fetch_assoc($mail_finding_result);
+        $rec_add=$mail_finding_row['Email'];
+        $rec_name=$mail_finding_row['Name'];
+         require 'sendmail.php' ;
+        $mail->addAddress($rec_add);
+
+        $mail->Subject="Evaluation Required for NOC";
+        $mail->Body="Hello ".$rec_name.", An Application for Study Leave is awaiting your approval. Please Visit NOC Website to send Your valuable Response. Thank You.";
+        $mail->send();
 
         header("location: applicant.php");
       }
