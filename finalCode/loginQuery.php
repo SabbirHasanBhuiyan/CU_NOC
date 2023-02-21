@@ -1,4 +1,7 @@
 <?php
+
+use FontLib\Table\Type\head;
+
 $showError = false;
 $login = false;
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -29,6 +32,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 else if($user_type=='Chairman') header("location: chairman.php");
                 else if($user_type=="Registrar") header("location: registrar.php");
                 else if($user_type=='HigherStudies')header("location: HigherStudies.php");
+                else if($user_type=='AccountsController' || $user_type=='Librarian' || $user_type=='College'){
+                    header("location: departments.php?id=$id");
+                }
     }
     else {
         $showError = "Invalid Email or Password";

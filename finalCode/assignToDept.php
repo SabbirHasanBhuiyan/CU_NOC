@@ -13,7 +13,7 @@
      
  if($_SERVER["REQUEST_METHOD"]=="POST")
  {
-  $sqlQuery10="INSERT INTO `evaluates`(`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Assign To Different Departments', '$id', '$app_id', 'Pending', CURRENT_TIME(),' ')";
+  $sqlQuery10="INSERT INTO `evaluates`(`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Assigned To Different Departments', '$id', '$app_id', 'Pending', CURRENT_TIME(),' ')";
 
 
   $result=mysqli_query($connection ,$sqlQuery10);
@@ -22,9 +22,9 @@
 
 
     
-  if(isset($_POST['Register']))
+  if(isset($_POST['AccountsController']))
   {
-    $reg=$_POST['Register'];
+    $reg=$_POST['AccountsController'];
     $app_id=$row['applicant_id'];
    $sqlQuery2="INSERT INTO `evaluates`(`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('$reg', '$id', '$app_id', 'Pending', CURRENT_TIME(),' ')";
    $result5=mysqli_query($connection,$sqlQuery2);
@@ -179,7 +179,7 @@
                   <img class="w-10 h-10" src="images/editor2.png" alt="">  
                   <span class="flex-1 ml-3 whitespace-nowrap">হিসাব নিয়ামক, চ.বি.
                   </span>
-                   <input id="link-checkbox" type="checkbox" name="Register" value="Registrar" class="w-4 h-4 text-blue-600 bg-sky-50 border-black rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-800">
+                   <input id="link-checkbox" type="checkbox" name="AccountsController" value="AccountsController" class="w-4 h-4 text-blue-600 bg-sky-50 border-black rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-800">
                 </a>
             </li>
             <li>

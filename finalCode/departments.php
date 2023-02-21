@@ -34,7 +34,7 @@ session_start();
           <div class="grid grid-cols-6 gap-3">
           <div class="col-start-2 col-span-4">
 
-          <a href="registrarConfirmation.php?id=<?php echo $newApplication['Leave_ID']?>" class="block w-9/10 p-2 bg-gradient-to-r from-blue-500 to-black rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <a href="departmentsConfirmation.php?leave_id=<?php echo $newApplication['Leave_ID']?>&id=<?php echo $id ?>" class="block w-9/10 p-2 bg-gradient-to-r from-blue-500 to-black rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
           <div class="flex flex-row justify-between items-center">
             <img class="w-8 h-8 rounded-full" src="./images/leave.png" alt="">
             <h5 class="mb-2  text-lg font-serif font-light tracking-tight text-white text-center">
