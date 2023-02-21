@@ -2,15 +2,15 @@
  //session_start();
  include 'db_connect.php';
 
- $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Register Primary Approval' and status='Pending'";
+ $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Registrar Primary Approval' and status='Pending'";
  $result=mysqli_query($connection,$sql);
  $newApplications = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
- $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Assigned To Different Departments' and status='Approved'";
+ $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Registrar Secondary Approval' and status='Pending'";
  $result=mysqli_query($connection,$sql);
  $higherStudyApprovedS = mysqli_fetch_all($result, MYSQLI_ASSOC); 
 
- $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Vice Chancellor Office' and status='Approved'";
+ $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Register Final Approval' and status='Pending'";
  $result=mysqli_query($connection,$sql);
  $VCApprovedS = mysqli_fetch_all($result, MYSQLI_ASSOC);
  

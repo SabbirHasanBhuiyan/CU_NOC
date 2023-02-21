@@ -65,7 +65,11 @@ if(isset($_GET['leave_id'])){
 
             if($flag){
                 $sqlQuery3="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Assigned To Different Departments' AND `evaluates`.`Leave_ID` = '$leave_id' ";
+
+                $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Higher Study Brunch Secondary Approval', '$leave_id', '$app_id', 'Pending', CURRENT_TIME(), '');";
     
+                $result2= mysqli_query($connection,$sqlQuery2);
+
                 $result3= mysqli_query($connection,$sqlQuery3);
             }
             header("location: departments.php?id=$deptID");

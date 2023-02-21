@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $comment = $_POST["comment"];
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
 
-        $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Register Primary Approval', '$id2', '$app_id', 'Pending', CURRENT_TIME(), '');";
+        $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Primary Approval', '$id2', '$app_id', 'Pending', CURRENT_TIME(), '');";
 
         $result2= mysqli_query($connection,$sqlQuery2);
 
