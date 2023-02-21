@@ -13,7 +13,7 @@
      
  if($_SERVER["REQUEST_METHOD"]=="POST")
  {
-  $sqlQuery10="INSERT INTO `evaluates`(`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Assign To Different Departments', '$id', '$app_id', 'Pending', CURRENT_TIME(),' ')";
+  $sqlQuery10="INSERT INTO `evaluates`(`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Assigned To Different Departments', '$id', '$app_id', 'Pending', CURRENT_TIME(),' ')";
 
 
   $result=mysqli_query($connection ,$sqlQuery10);
