@@ -4,6 +4,7 @@
   $registerPrimaryApproval=0;
   $higherStudyPrimaryApproval=0;
   $assignedToDept=0;
+  $higherStudyBrunchSecondaryApproval=0;
   $registerSecondaryApproval=0;
   $VCApproval=0;
   $registerFinalApproval=0;
@@ -21,7 +22,7 @@
       $deptChairmain=2;
       $registerPrimaryApproval=1;
 
-      $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Register Primary Approval' " ;
+      $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Registrar Primary Approval' " ;
       $result=mysqli_query($connection,$sql);
       $application=mysqli_fetch_assoc($result);
       if(!empty($application) && $application['status']=="Approved"){  //Register Primary Approval
@@ -40,39 +41,47 @@
           $application=mysqli_fetch_assoc($result);          
           if(!empty($application) && $application['status']=="Approved"){ //various Department checking
             $assignedToDept=2;
-            $registerSecondaryApproval=1;
+            $higherStudyBrunchSecondaryApproval=1;
 
-            $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Register Second Approval' " ;
+            $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Brunch Secondary Approval' " ;
             $result=mysqli_query($connection,$sql);
             $application=mysqli_fetch_assoc($result); 
             if(!empty($application) && $application['status']=="Approved"){
-              $registerSecondaryApproval=2;
-              $VCApproval=1;
+              $higherStudyBrunchSecondaryApproval=2;
+              $registerSecondaryApproval=1;
 
-              $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Vice Chancellor Office' " ;
+              $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Registrar Second Approval' " ;
               $result=mysqli_query($connection,$sql);
-              $application=mysqli_fetch_assoc($result);               
+              $application=mysqli_fetch_assoc($result); 
               if(!empty($application) && $application['status']=="Approved"){
-                $VCApproval=2;
-                $registerFinalApproval=1;
+                $registerSecondaryApproval=2;
+                $VCApproval=1;
 
-                $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Register Final Approval' " ;
+                $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Vice Chancellor Office' " ;
                 $result=mysqli_query($connection,$sql);
-                $application=mysqli_fetch_assoc($result);            
+                $application=mysqli_fetch_assoc($result);               
                 if(!empty($application) && $application['status']=="Approved"){
-                  $registerFinalApproval=2;
-                  $higherStudyBranchFinalApproval=1;
+                  $VCApproval=2;
+                  $registerFinalApproval=1;
 
-                  $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Final Approval' " ;
+                  $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Registrar Final Approval' " ;
                   $result=mysqli_query($connection,$sql);
-                  $application=mysqli_fetch_assoc($result);                   
+                  $application=mysqli_fetch_assoc($result);            
                   if(!empty($application) && $application['status']=="Approved"){
-                    $higherStudyBranchFinalApproval=2;
+                    $registerFinalApproval=2;
+                    $higherStudyBranchFinalApproval=1;
+
+                    $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Final Approval' " ;
+                    $result=mysqli_query($connection,$sql);
+                    $application=mysqli_fetch_assoc($result);                   
+                    if(!empty($application) && $application['status']=="Approved"){
+                      $higherStudyBranchFinalApproval=2;
+                    }
                   }
+                  
                 }
-                
               }
-            }
+          }
           }
 
         }

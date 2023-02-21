@@ -1,6 +1,60 @@
-<?php require 'HigherStudiesConfirmationQuery.php' ?>
+<?php
+session_start();
+include 'db_connect.php';
+$id;
+if(isset($_GET['id'])){ 
+    $id=$_GET['id'];
+    $sqlQuery="SELECT * from study_leave_application where leave_id='$id' ";
+    $result= mysqli_query($connection,$sqlQuery);
+    $row = mysqli_fetch_assoc($result);
 
+    $nameOfProgram = $row["Name_of_Program"];
+    $destination_univerity = $row["Destination"];
+    $Destination_Department = $row["Department"];
+    $Program_Duration=$row['Duration'];
+    $leave_start_date=$row['Leave_Start_Date'];
+    $program_start_date=$row['Program_Start_Date'];
+    $Financial_Source=$row['Financial_Source'];
+    $app_id=$row['applicant_id'];
+    $file_name=$row['Attachments'];
+    
+    $sqlQuery2="SELECT * from user where ID='$app_id' ";
+    $result2= mysqli_query($connection,$sqlQuery2);
+    $row2 = mysqli_fetch_assoc($result2);
+
+    $app_name=$row2['Name'];
+    $app_dept=$row2['Department'];
+}
+
+    $id2=$_GET['id'];
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $comment = $_POST["comment"];
+        if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
+    
+            $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Vice Chancellor Office', '$id2', '$app_id', 'Pending', CURRENT_TIME(), '');";
+    
+            $result2= mysqli_query($connection,$sqlQuery2);
+    
+            $sqlQuery3="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Registrar Secondary Approval' AND `evaluates`.`Leave_ID` = '$id2' AND `evaluates`.`applicant_id` = '$app_id'";
+    
+            $result3= mysqli_query($connection,$sqlQuery3);
+    
+            header("location: registrar.php");
+          }
+    
+          else {
+            
+          }        
  
+
+        header("location: registrar.php");
+    }
+
+
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +81,7 @@
    </div>
       </header>
     
-<form class="mx-10 my-10 p-10"  method="post">
+<form class="mx-10 my-10 p-10" action="registrarToVC.php?id=<?php echo $id?>" method="post">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
     <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Applicant Name</label>
@@ -78,7 +132,7 @@
 <textarea id="comment" name="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="write your Opinion...."></textarea>
 </div>
 <br> 
-    <button type="submit" name='submit' class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Forward To Registrar</button>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Forward to Vice Chancellor</button>
 </form>
 
 <footer class="footer items-center p-4 bg-gradient-to-r from-black to-blue-500 text-neutral-content">
