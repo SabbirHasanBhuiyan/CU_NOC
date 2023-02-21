@@ -56,8 +56,8 @@
 <section class="">
   <div class="fixed inset-y-0 right-20">
     <div class="h-full flex flex-col items-center justify-center">
-      <button class="mb-4 p-2 rounded-full hover:bg-green-600 focus:bg-green-500 focus:outline-none" aria-label="Approved">
-        <div class="rounded-full h-8 w-8 bg-green-600"></div>
+      <button class="mb-4 p-2 rounded-full hover:bg-green-300 focus:bg-green-300 focus:outline-none" aria-label="Approved">
+        <div class="rounded-full h-8 w-8 bg-green-300"></div>
         <span class="text-sm font-medium text-green-600">Approved</span>
       </button>
       <button class="p-2 rounded-full hover:bg-yellow-300 focus:bg-yellow-500 focus:outline-none" aria-label="Processing">
