@@ -5,7 +5,7 @@
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $comment=$_POST['comment'];
-  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Brunch Final Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
+  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Branch Final Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
   $res=mysqli_query($connection,$sqlQuery2);
     header("location: HigherStudies.php");
 

@@ -142,15 +142,15 @@
 
     <div class="flex relative pb-8 sm:items-center md:w-2/3 mx-auto">
       <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-        <div class="h-full w-1 <?php if($higherStudyBrunchSecondaryApproval==2){?>bg-green-500 <?php }else if($higherStudyBrunchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> pointer-events-none"></div>
+        <div class="h-full w-1 <?php if($higherStudyBranchSecondaryApproval==2){?>bg-green-500 <?php }else if($higherStudyBranchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> pointer-events-none"></div>
       </div>
-      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center <?php if($higherStudyBrunchSecondaryApproval==2){?>bg-green-300 <?php }else if($higherStudyBrunchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> text-black relative z-10 title-font font-medium text-sm">5</div>
+      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center <?php if($higherStudyBranchSecondaryApproval==2){?>bg-green-300 <?php }else if($higherStudyBranchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> text-black relative z-10 title-font font-medium text-sm">5</div>
       <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-        <div class="flex-shrink-0 w-24 h-24 <?php if($higherStudyBrunchSecondaryApproval==2){?>bg-green-300 <?php }else if($higherStudyBrunchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-100 <?php } ?> text-indigo-500 rounded-full inline-flex items-center justify-center">
+        <div class="flex-shrink-0 w-24 h-24 <?php if($higherStudyBranchSecondaryApproval==2){?>bg-green-300 <?php }else if($higherStudyBranchSecondaryApproval==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-100 <?php } ?> text-indigo-500 rounded-full inline-flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-10 h-10"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M374.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 402.7 86.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z"/></svg>
         </div>
         <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Higher Study Brunch Secondary Approval</h2>
+          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Higher Study Branch Secondary Approval</h2>
         </div>
       </div>
     </div>

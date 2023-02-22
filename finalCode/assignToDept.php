@@ -9,7 +9,7 @@
     $result1=mysqli_query($connection,$sql);
     $row=mysqli_fetch_assoc($result1);
     $app_id=$row['applicant_id'];
-  $sqlQuery="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Brunch Primary Approval' AND `evaluates`.`Leave_ID` = '$id'" ;
+  $sqlQuery="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Branch Primary Approval' AND `evaluates`.`Leave_ID` = '$id'" ;
      
      
  if($_SERVER["REQUEST_METHOD"]=="POST")

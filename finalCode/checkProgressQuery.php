@@ -4,7 +4,7 @@
   $registerPrimaryApproval=0;
   $higherStudyPrimaryApproval=0;
   $assignedToDept=0;
-  $higherStudyBrunchSecondaryApproval=0;
+  $higherStudyBranchSecondaryApproval=0;
   $registerSecondaryApproval=0;
   $VCApproval=0;
   $registerFinalApproval=0;
@@ -29,10 +29,10 @@
         $registerPrimaryApproval=2;
         $higherStudyPrimaryApproval=1;
 
-        $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Brunch Primary Approval' " ;
+        $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Primary Approval' " ;
         $result=mysqli_query($connection,$sql);
         $application=mysqli_fetch_assoc($result);
-        if(!empty($application) && $application['status']=="Approved"){ //Higher Study Brunch Primary Approval check
+        if(!empty($application) && $application['status']=="Approved"){ //Higher Study Branch Primary Approval check
           $higherStudyPrimaryApproval=2;
           $assignedToDept=1;
 
@@ -41,16 +41,16 @@
           $application=mysqli_fetch_assoc($result);          
           if(!empty($application) && $application['status']=="Approved"){ //various Department checking
             $assignedToDept=2;
-            $higherStudyBrunchSecondaryApproval=1;
+            $higherStudyBranchSecondaryApproval=1;
 
-            $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Brunch Secondary Approval' " ;
+            $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Secondary Approval' " ;
             $result=mysqli_query($connection,$sql);
             $application=mysqli_fetch_assoc($result); 
             if(!empty($application) && $application['status']=="Approved"){
-              $higherStudyBrunchSecondaryApproval=2;
+              $higherStudyBranchSecondaryApproval=2;
               $registerSecondaryApproval=1;
 
-              $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Registrar Second Approval' " ;
+              $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Registrar Secondary Approval' " ;
               $result=mysqli_query($connection,$sql);
               $application=mysqli_fetch_assoc($result); 
               if(!empty($application) && $application['status']=="Approved"){
@@ -71,7 +71,7 @@
                     $registerFinalApproval=2;
                     $higherStudyBranchFinalApproval=1;
 
-                    $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Brunch Final Approval' " ;
+                    $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Final Approval' " ;
                     $result=mysqli_query($connection,$sql);
                     $application=mysqli_fetch_assoc($result);                   
                     if(!empty($application) && $application['status']=="Approved"){
