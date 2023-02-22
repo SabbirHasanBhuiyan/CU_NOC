@@ -1,4 +1,24 @@
 <?php require 'HigherStudiesConfirmationQuery.php' ?>
+<?php
+  include 'db_connect.php';
+  $id4=$_GET['id'];
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+  $comment=$_POST['comment'];
+  $sql="SELECT * FROM `study_leave_application` WHERE Leave_Id='$id4' ";
+  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Brunch Secondary Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
+    $result1=mysqli_query($connection,$sql);
+    $row=mysqli_fetch_assoc($result1);
+    $app_id=$row['applicant_id'];
+
+    $sqlQuery3="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Second Approval', '$id4', '$app_id', 'Pending', CURRENT_TIME(), '');";
+    $res=mysqli_query($connection,$sqlQuery3);
+    $res1=mysqli_query($connection,$sqlQuery2);
+    header("location: HigherStudies.php");
+
+}
+
+?>
 
  
 

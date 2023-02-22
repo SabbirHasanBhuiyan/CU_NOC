@@ -8,6 +8,7 @@
     $sql="SELECT * FROM `study_leave_application` WHERE Leave_Id='$id' ";
     $result1=mysqli_query($connection,$sql);
     $row=mysqli_fetch_assoc($result1);
+    $app_id=$row['applicant_id'];
   $sqlQuery="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Brunch Primary Approval' AND `evaluates`.`Leave_ID` = '$id'" ;
      
      
