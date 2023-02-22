@@ -71,7 +71,7 @@
                     $registerFinalApproval=2;
                     $higherStudyBranchFinalApproval=1;
 
-                    $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Branch Final Approval' " ;
+                    $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Higher Study Brunch Final Approval' " ;
                     $result=mysqli_query($connection,$sql);
                     $application=mysqli_fetch_assoc($result);                   
                     if(!empty($application) && $application['status']=="Approved"){

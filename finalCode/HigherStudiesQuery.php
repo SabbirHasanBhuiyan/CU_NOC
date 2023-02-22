@@ -10,7 +10,7 @@
  $result=mysqli_query($connection,$sql);
  $higherStudyApprovedS = mysqli_fetch_all($result, MYSQLI_ASSOC); 
 
- $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Register Second Approval' and status='Approved'";
+ $sql="SELECT Leave_ID FROM evaluates where Evaluation_type='Higher Study Brunch Final Approval' and status='Pending'";
  $result=mysqli_query($connection,$sql);
  $VCApprovedS = mysqli_fetch_all($result, MYSQLI_ASSOC);
  
