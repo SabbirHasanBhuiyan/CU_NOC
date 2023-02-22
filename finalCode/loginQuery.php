@@ -33,7 +33,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 else if($user_type=="Registrar") header("location: registrar.php");
                 else if($user_type=='HigherStudies')header("location: HigherStudies.php");
                 else if($user_type=='AccountsController' || $user_type=='Librarian' || $user_type=='College'){
-                    header("location: departments.php?id=$id");
+                    header("location: departments.php?id=$id");  
+                    
+                }
+                else if( $user_type=='Vice Chancellor Office')
+                {
+                   header("location: ViceChanchelor.php");
                 }
     }
     else {
