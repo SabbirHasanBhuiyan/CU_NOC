@@ -14,12 +14,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $row = mysqli_fetch_assoc($result);
     $num = mysqli_num_rows($result);
     
-    $id=$row['ID'];
-    $name=$row['Name'];
-    $user_type=$row['user_type'];
-    $dept=$row['Department'];
+   
     if($num==1){
-        
+                $id=$row['ID'];
+                $name=$row['Name'];
+                $user_type=$row['user_type'];
+                $dept=$row['Department'];
+                
                 $login=true;
                 session_start();
                 $_SESSION['loggedin'] = true;
@@ -37,13 +38,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 }
     }
     else {
-        $showError = "Invalid Email or Password";
+        $showError = "Invalid Email or Password, Try Again. ";
     }
 
-    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
-        header("location: index.php");
-        exit;
-    }
 
 
 }
