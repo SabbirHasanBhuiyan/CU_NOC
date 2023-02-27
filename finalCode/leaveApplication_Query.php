@@ -7,6 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $Destination_Department = $_POST["Destination_Department"];
     $Program_Duration=$_POST['Program_Duration'];
     $Financial_Source=$_POST['Financial_Source'];
+    $Destination_Country=$_POST['destination_country'];
    // $important_document=$_POST['important_document'];
     $start_date=strtotime($_POST['leave_start_date']);
     $date1=date('d',$start_date);
@@ -30,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
         $app_id = $_SESSION['id'];
         $leave_id = rand(1, 100000000);
-        $sqlQuery="INSERT INTO `study_leave_application` (`Leave_ID`, `Name_of_Program`, `Destination`, `Department`, `Duration`, `Financial_Source`, `Leave_Start_Date`, `Program_Start_Date`, `Attachments`, `applicant_id`) VALUES ('$leave_id', '$nameOfProgram', '$destination_univerity', '$Destination_Department', '$Program_Duration', '$Financial_Source', '$stdate', '$eddate', '$pname', '$app_id')";  
+        $sqlQuery="INSERT INTO `study_leave_application` (`Leave_ID`, `Name_of_Program`, `Destination`, `Department`, `Duration`, `Destination_Country`, `Financial_Source`, `Leave_Start_Date`, `Program_Start_Date`, `Attachments`, `applicant_id`) VALUES ('$leave_id', '$nameOfProgram', '$destination_univerity', '$Destination_Department', '$Program_Duration','$Destination_Country', '$Financial_Source', '$stdate', '$eddate', '$pname', '$app_id')";  
 
         $result= mysqli_query($connection,$sqlQuery);
 
