@@ -5,15 +5,8 @@
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $comment=$_POST['comment'];
-  $sql="SELECT * FROM `study_leave_application` WHERE Leave_Id='$id4' ";
-  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Branch Secondary Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
-    $result1=mysqli_query($connection,$sql);
-    $row=mysqli_fetch_assoc($result1);
-    $app_id=$row['applicant_id'];
-
-    $sqlQuery3="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Secondary Approval', '$id4', '$app_id', 'Pending', CURRENT_TIME(), '');";
-    $res=mysqli_query($connection,$sqlQuery3);
-    $res1=mysqli_query($connection,$sqlQuery2);
+  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Branch Final Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
+  $res=mysqli_query($connection,$sqlQuery2);
     header("location: HigherStudies.php");
 
 }
@@ -98,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 <textarea id="comment" name="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="write your Opinion...."></textarea>
 </div>
 <br> 
-    <button type="submit" name='submit' class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Forward To Registrar</button>
+    <button type="submit" name='submit' class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirm Final Approval</button>
 </form>
 
 <footer class="footer items-center p-4 bg-gradient-to-r from-black to-blue-500 text-neutral-content">

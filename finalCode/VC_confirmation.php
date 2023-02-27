@@ -1,20 +1,21 @@
-<?php require 'HigherStudiesConfirmationQuery.php' ?>
+<?php require 'VC_ConfirmationQuery.php' ?>
 <?php
   include 'db_connect.php';
-  $id4=$_GET['id'];
+  $id4=$_GET['id2'];
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $comment=$_POST['comment'];
   $sql="SELECT * FROM `study_leave_application` WHERE Leave_Id='$id4' ";
-  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Higher Study Branch Secondary Approval' AND `evaluates`.`Leave_ID` = '$id4'" ;
-    $result1=mysqli_query($connection,$sql);
+  $result1=mysqli_query($connection,$sql);
     $row=mysqli_fetch_assoc($result1);
     $app_id=$row['applicant_id'];
+  $sqlQuery2="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Vice Chancellor Office' AND `evaluates`.`Leave_ID` = '$id4'" ;
+  $res=mysqli_query($connection,$sqlQuery2);
+  $sqlQuery3="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Final Approval', '$id4', '$app_id', 'Pending', CURRENT_TIME(), '');";
+    $res1=mysqli_query($connection,$sqlQuery3);
 
-    $sqlQuery3="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Secondary Approval', '$id4', '$app_id', 'Pending', CURRENT_TIME(), '');";
-    $res=mysqli_query($connection,$sqlQuery3);
-    $res1=mysqli_query($connection,$sqlQuery2);
-    header("location: HigherStudies.php");
+
+    header("location: ViceChanchelor.php");
 
 }
 

@@ -1,12 +1,6 @@
 <?php
 session_start();
-// on all screens requiring login, redirect if NOT logged in
-if(!isset( $_SESSION['loggedin'])){
-  header('location:index.php');
- exit();
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +12,7 @@ if(!isset( $_SESSION['loggedin'])){
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.49.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />
 </head>
-<body class="screen bg-gradient-to-r from-white to-blue-500">
+<body class="h-screen bg-gradient-to-r from-white to-blue-500">
 <header>
     <!-- For Using navbar wriiten at another place -->
 <?php require 'navbar.php' ?>
@@ -28,64 +22,30 @@ if(!isset( $_SESSION['loggedin'])){
         
     </div>
 </header>
-<div>
-  <h2 class="text-center  text-xl text-serif  font-bold p-2 m-5">Application Form</h2>
 
-
-</div>
-  <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 justify-center items-center  gap-5 ms-auto mx-20 px-5">
-  <a href="leaveApplication.php">
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div class="flex flex-col items-center pb-10">
-          <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="./images/cap.png" alt="Cap image"/>
-          <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Study Leave Application</h5>
-          <span class="text-sm text-gray-500 dark:text-gray-400">Apply</span>
-      </div>
-  </div>
-  </a>
-  
-  
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div class="flex flex-col items-center pb-10">
-        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="./images/color_processing.webp" alt="Cap image"/>
-        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Demo Application</h5>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Apply</span>
-    </div>
-</div>
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-  <div class="flex flex-col items-center pb-10">
-      <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="./images/color_processing.webp" alt="Cap image"/>
-      <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Demo Application</h5>
-      <span class="text-sm text-gray-500 dark:text-gray-400">Apply</span>
-  </div>
-</div>
-<div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
-  <div class="flex flex-col items-center pb-10">
-      <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="./images/color_processing.webp" alt="Cap image"/>
-      <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Demo Application</h5>
-      <span class="text-sm text-gray-500 dark:text-gray-400">Apply</span>
-  </div>
-</div>
-</div>
- 
 <!-- --------Application Update----------------- -->
 <div class="">
-  <h2 class="text-center  text-xl text-serif font-bold  p-2 m-5">My Applications</h2>
+  <h2 class="text-center  text-xl text-serif font-bold  p-2 m-5">Pending Applications</h2>
 </div>
 
-<?php require 'applicant_applications.php' ?>
+<?php 
 
-<div>
-<?php foreach($rows as $row){ ?>
-    <div class="grid grid-cols-6 gap-3">
+include 'db_connect.php';
+$sqlQuery="SELECT Leave_ID FROM evaluates where Evaluation_type='Vice Chancellor Office' and status='Pending'";
+
+$result= mysqli_query($connection,$sqlQuery);
+while($row = mysqli_fetch_assoc($result)){
+    $ans2=$row['Leave_ID'];
+   echo ' <div class="grid grid-cols-6 gap-3">
   <div class="col-start-2 col-span-4">
-
-    <a href="checkProgress.php?Leave_ID=<?php echo $row['Leave_ID'] ?>" class="block w-9/10 p-2 bg-gradient-to-r from-blue-500 to-black rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <a href="VC_confirmation.php?id2=';
+    echo  $ans2 ;
+    echo '" class="block w-9/10 p-2 bg-gradient-to-r from-blue-500 to-black rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <div class="flex flex-row justify-between items-center">
       <img class="w-8 h-8 rounded-full" src="./images/leave.png" alt="">
-      <h5 class="mb-2  text-lg font-serif font-light tracking-tight text-white text-center">
-      <?php echo $row['Name_of_Program'] ?>
-      </h5>
+      <h5 class="mb-2  text-lg font-serif font-light tracking-tight text-white text-center">';
+      echo $ans2;
+    echo ' </h5>
       <button type="button" class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         <span class="sr-only">Icon description</span>
@@ -95,12 +55,23 @@ if(!isset( $_SESSION['loggedin'])){
     </a>
   </div>
 </div>
-<br>;
-<?php } ?>
-</div>
+<br>';
+}
+
+
+
+?>
+  
+
+
+
+
+
+
+
 
 <div>
-<footer class="footer items-center mt-2 p-4 bg-gradient-to-r from-black to-blue-500 text-neutral-content">
+<footer class="footer items-center mt-2 p-4 bg-gradient-to-r from-black to-blue-500 text-neutral-content" style="position:absolute;bottom:0">
   <div class="items-center grid-flow-col">
     <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg> 
     <p>Copyright © 2023 - All right reserved</p>
