@@ -9,13 +9,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $email = $_POST["email"];
     $pass = $_POST["password"];
 
-    $sqlQuery="SELECT * from user where email='$email'AND password='$pass' ";
+    $sqlQuery="SELECT * from user where email='$email'";
     $result= mysqli_query($connection,$sqlQuery);
     $row = mysqli_fetch_assoc($result);
     $num = mysqli_num_rows($result);
     
    
     if($num==1){
+        if(password_verify($pass, $row['Password'])){
                 $id=$row['ID'];
                 $name=$row['Name'];
                 $user_type=$row['user_type'];
@@ -41,7 +42,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 {
                    header("location: ViceChanchelor.php");
                 }
+            }
     }
+
     else {
         $showError = "Invalid Email or Password, Try Again. ";
     }
@@ -49,6 +52,4 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 
 }
-
-
 ?>

@@ -17,6 +17,7 @@ if(isset($_GET['id'])){
     $Financial_Source=$row['Financial_Source'];
     $app_id=$row['applicant_id'];
     $file_name=$row['Attachments'];
+    $application_name=$row['my_application_registrar'];
     
     $sqlQuery2="SELECT * from user where ID='$app_id' ";
     $result2= mysqli_query($connection,$sqlQuery2);

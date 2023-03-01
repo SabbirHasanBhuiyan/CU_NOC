@@ -15,6 +15,7 @@ $row = mysqli_fetch_assoc($result);
     $Financial_Source=$row['Financial_Source'];
     $app_id=$row['applicant_id'];
     $file_name=$row['Attachments'];
+    $application_name=$row['my_application_chairman'];
     
     $sqlQuery2="SELECT * from user where ID='$app_id' ";
     $result2= mysqli_query($connection,$sqlQuery2);
@@ -35,6 +36,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $sqlQuery3="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Chairman' AND `evaluates`.`Leave_ID` = '$id2' AND `evaluates`.`applicant_id` = '$app_id'";
 
         $result3= mysqli_query($connection,$sqlQuery3);
+
+        require('generate_my_application_chairman.php');
 
         // Query For Sending Mail 
 

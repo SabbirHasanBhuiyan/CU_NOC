@@ -14,6 +14,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $sqlQuery3="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Registrar Secondary Approval', '$id4', '$app_id', 'Pending', CURRENT_TIME(), '');";
     $res=mysqli_query($connection,$sqlQuery3);
     $res1=mysqli_query($connection,$sqlQuery2);
+
+    
+
     header("location: HigherStudies.php");
 
 }

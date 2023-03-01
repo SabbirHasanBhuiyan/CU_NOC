@@ -10,8 +10,7 @@ if(isset( $_SESSION['user_type'])){
     else if($user_type=='AccountsController' || $user_type=='Librarian' || $user_type=='College'){
         header("location: departments.php?id=$id");
     }
-    
-    
+
   exit();
 }
 

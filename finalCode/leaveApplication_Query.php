@@ -8,7 +8,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $Program_Duration=$_POST['Program_Duration'];
     $Financial_Source=$_POST['Financial_Source'];
     $Destination_Country=$_POST['destination_country'];
+    $designation=$_POST['designation'];
    // $important_document=$_POST['important_document'];
+   $joining_date=strtotime($_POST['joining_date']);
+   $date1=date('d',$joining_date);
+   $month1=date('m',$joining_date);
+   $year1=date('Y',$joining_date);
+   $jdate = $year1 . "-" . $month1 . "-" . $date1;
     $start_date=strtotime($_POST['leave_start_date']);
     $date1=date('d',$start_date);
     $month1=date('m',$start_date);
@@ -31,13 +37,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){
         $app_id = $_SESSION['id'];
         $leave_id = rand(1, 100000000);
-        $sqlQuery="INSERT INTO `study_leave_application` (`Leave_ID`, `Name_of_Program`, `Destination`, `Department`, `Duration`, `Destination_Country`, `Financial_Source`, `Leave_Start_Date`, `Program_Start_Date`, `Attachments`, `applicant_id`) VALUES ('$leave_id', '$nameOfProgram', '$destination_univerity', '$Destination_Department', '$Program_Duration','$Destination_Country', '$Financial_Source', '$stdate', '$eddate', '$pname', '$app_id')";  
+        $sqlQuery="INSERT INTO `study_leave_application` (`Leave_ID`, `Name_of_Program`, `Destination`, `Department`, `Duration`, `Destination_Country`, `Financial_Source`, `designation`,  `joining_date`, `Leave_Start_Date`, `Program_Start_Date`, `Attachments`, `applicant_id`) VALUES ('$leave_id', '$nameOfProgram', '$destination_univerity', '$Destination_Department', '$Program_Duration','$Destination_Country', '$Financial_Source','$designation','$jdate', '$stdate', '$eddate', '$pname', '$app_id')";  
 
         $result= mysqli_query($connection,$sqlQuery);
 
         $sqlQuery2="INSERT INTO `evaluates` (`Evaluation_type`, `Leave_ID`, `applicant_id`, `status`, `evaluation_time`, `comment`) VALUES ('Chairman', '$leave_id', '$app_id', 'Pending', CURRENT_TIME(), '');";
 
-        
+        require('generate_my_application_chairman.php');
 
         // Query For Sending Mail 
 
@@ -64,13 +70,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
       else {
         
-      }
-
-    
-
-   
+      } 
 
 }
-
 
 ?>

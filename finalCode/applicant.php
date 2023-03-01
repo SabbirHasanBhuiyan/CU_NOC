@@ -30,8 +30,6 @@ if(!isset( $_SESSION['loggedin'])){
 </header>
 <div>
   <h2 class="text-center  text-xl text-serif  font-bold p-2 m-5">Application Form</h2>
-
-
 </div>
   <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 justify-center items-center  gap-5 ms-auto mx-20 px-5">
   <a href="leaveApplication.php">
