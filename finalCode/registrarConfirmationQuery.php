@@ -45,6 +45,17 @@ if(isset($_GET['id'])){
           else {
             
           }        
+
+          $mail_finding_query="SELECT Email from user where user_type='HigherStudies' ";
+          $mail_finding_result= mysqli_query($connection,$mail_finding_query);
+          $mail_finding_row=mysqli_fetch_assoc($mail_finding_result);
+          $rec_add=$mail_finding_row['Email'];
+           require 'sendmail.php' ;
+          $mail->addAddress($rec_add);
+  
+          $mail->Subject="Evaluation Required for NOC";
+          $mail->Body="Hello Higher Study Brunch CU, An Application for Study Leave is awaiting your primary approval. Please Visit NOC Website to send Your valuable Response. Thank You.";
+          $mail->send();
  
 
         header("location: registrar.php");

@@ -1,5 +1,4 @@
 <?php 
- session_start();
   $deptChairmain=0;
   $registerPrimaryApproval=0;
   $higherStudyPrimaryApproval=0;
