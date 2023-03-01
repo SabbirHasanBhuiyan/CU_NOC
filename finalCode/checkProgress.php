@@ -112,31 +112,25 @@ if(!isset( $_SESSION['loggedin'])){
         </div>
         
         <!---------------------------POP OVER CODE ------------------------>
-
+        
+        <?php if($numOFDept!=0){ ?>
         <div data-popover id="popover-user-profile" role="tooltip" class="border-solid border-2 border-indigo-600 absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 right-0 focus:outline-none">
           <div class="block m-4 ">
             <div class="mt-2 flex flex-col gap-4">
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="w-6 h-6 rounded-full" />
-                <span class="ml-2 text-xl font-bold text-indigo-500">Library</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="w-6 h-6 rounded-full" />
-                <span class="ml-2 text-xl font-bold text-indigo-500">Register</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="w-6 h-6 rounded-full" />
-                <span class="ml-2 text-xl font-bold text-indigo-500">Circle checkbox</span>
-              </label>
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="w-6 h-6 rounded-full" />
-                <span class="ml-2 text-xl font-bold text-indigo-500">Circle checkbox</span>
-              </label>
+              <?php foreach($assaignedDepartments as $assaignedDepartment){ ?>
+                  <?php if(!empty($assaignedDepartment['Evaluation_type'])){ ?>
+                <label class="inline-flex items-center">
+                <input [type=checkbox]:disabled class="w-6 h-6 rounded-full <?php if( $assaignedDepartment['status']=='Pending'){ ?> bg-yellow-300 <?php }else{ ?> bg-green-300 <?php } ?> " />
+                  <span class="ml-2 text-xl font-bold text-indigo-500"><?php echo $assaignedDepartment['Evaluation_type'] ?></span>
+                </label>
+                <?php } ?>
+              <?php } ?>
             </div>
           </div>
           <div data-popper-arrow></div>
         </div>
         
+        <?php } ?>
       </div>
     </button>
 
