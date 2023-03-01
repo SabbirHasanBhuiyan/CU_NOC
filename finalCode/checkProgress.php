@@ -1,3 +1,11 @@
+<?php
+session_start();
+// on all screens requiring login, redirect if NOT logged in
+if(!isset( $_SESSION['loggedin'])){
+  header('location:index.php');
+ exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,42 +20,7 @@
 </head>
 <body class=" bg-sky-100">
 <!------------------------- Navigation Bar----------------------->
-    <nav class=" navbar bg-base-100 bg-gradient-to-r from-blue-500 to-white px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-        <div class="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="https://flowbite.com/" class="flex items-center">
-            <img src="./images/logo.png" class="h-12 w-8 mr-3 sm:h-9" alt="CU Logo" />
-            <span class="self-center text-2xl text-white font-serif font-bold  dark:text-white">University Of Chittagong</span>
-        </a>
-        <div class="flex items-center md:order-2 ">
-            <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-              <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full " src="./images/user.png" alt="">
-            </button>
-            <!-- Dropdown menu -->
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-              <div class="px-4 py-3">
-                <span class="block text-sm text-gray-900 dark:text-white">CU_NOC</span>
-                <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">sultanafarhana55@gamil.com</span>
-              </div>
-              <ul class="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</a>
-                </li>
-              </ul>
-            </div>
-            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-              <span class="sr-only">Open main menu</span>
-              <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-          </button>
-        </div>
-        </div>
-      </nav>
+<?php require 'navbar.php' ?>
 
 <!-------------------------------progress Bar--------------------------------->
   <!-- option two for color balls -->
@@ -125,21 +98,49 @@
       </div>
     </div>
 
-
-    <div class="flex relative pb-8 sm:items-center md:w-2/3 mx-auto">
+    <button  data-popover-target="popover-user-profile" type="button"  class="flex relative pb-8 sm:items-center md:w-2/3 mx-auto">
       <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-        <div class="h-full w-1 <?php if($assignedToDept==2){?>bg-green-500 <?php }else if($assignedToDept==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> pointer-events-none"></div>
+      <div class="h-full w-1 <?php if($assignedToDept==2){?>bg-green-500 <?php }else if($assignedToDept==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> pointer-events-none"></div>
       </div>
       <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center <?php if($assignedToDept==2){?>bg-green-300 <?php }else if($assignedToDept==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-200 <?php } ?> text-black relative z-10 title-font font-medium text-sm">4</div>
-      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-        <div class="flex-shrink-0 w-24 h-24 <?php if($assignedToDept==2){?>bg-green-300 <?php }else if($assignedToDept==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-100 <?php } ?> text-indigo-500 rounded-full inline-flex items-center justify-center">
+      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">        
+        <div  id="assigned_departments" class="flex-shrink-0 w-24 h-24 <?php if($assignedToDept==2){?>bg-green-300 <?php }else if($assignedToDept==1){?> bg-yellow-300 <?php } else  {?> bg-indigo-100 <?php } ?> text-indigo-500 rounded-full inline-flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"class="w-12 h-12"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M128 0c-13.3 0-24 10.7-24 24V142.1L81 119c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0l64-64c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-23 23V24c0-13.3-10.7-24-24-24zM344 200a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zM168 296a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm312 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM184 441.5l26.9 49.9c6.3 11.7 20.8 16 32.5 9.8s16-20.8 9.8-32.5l-36.3-67.5c1.7-1.7 3.2-3.6 4.3-5.8L248 345.5V400c0 17.7 14.3 32 32 32h48c17.7 0 32-14.3 32-32V345.5l26.9 49.9c1.2 2.2 2.6 4.1 4.3 5.8l-36.3 67.5c-6.3 11.7-1.9 26.2 9.8 32.5s26.2 1.9 32.5-9.8L424 441.5V480c0 17.7 14.3 32 32 32h48c17.7 0 32-14.3 32-32V441.5l26.9 49.9c6.3 11.7 20.8 16 32.5 9.8s16-20.8 9.8-32.5l-37.9-70.3c-15.3-28.5-45.1-46.3-77.5-46.3H470.2c-16.3 0-31.9 4.5-45.4 12.6l-33.6-62.3c-15.3-28.5-45.1-46.3-77.5-46.3H294.2c-32.4 0-62.1 17.8-77.5 46.3l-33.6 62.3c-13.5-8.1-29.1-12.6-45.4-12.6H118.2c-32.4 0-62.1 17.8-77.5 46.3L2.9 468.6c-6.3 11.7-1.9 26.2 9.8 32.5s26.2 1.9 32.5-9.8L72 441.5V480c0 17.7 14.3 32 32 32h48c17.7 0 32-14.3 32-32V441.5zM399 153l64 64c9.4 9.4 24.6 9.4 33.9 0l64-64c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-23 23V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V142.1l-23-23c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z"/></svg>
         </div>
-        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Assigned To Different Department CU</h2>
+       <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+          <h2 class="text-left font-medium title-font text-gray-900 mb-1 text-xl">Assigned To Different Department CU</h2>
         </div>
+        
+        <!---------------------------POP OVER CODE ------------------------>
+
+        <div data-popover id="popover-user-profile" role="tooltip" class="border-solid border-2 border-indigo-600 absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 right-0 focus:outline-none">
+          <div class="block m-4 ">
+            <div class="mt-2 flex flex-col gap-4">
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="w-6 h-6 rounded-full" />
+                <span class="ml-2 text-xl font-bold text-indigo-500">Library</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="w-6 h-6 rounded-full" />
+                <span class="ml-2 text-xl font-bold text-indigo-500">Register</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="w-6 h-6 rounded-full" />
+                <span class="ml-2 text-xl font-bold text-indigo-500">Circle checkbox</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="w-6 h-6 rounded-full" />
+                <span class="ml-2 text-xl font-bold text-indigo-500">Circle checkbox</span>
+              </label>
+            </div>
+          </div>
+          <div data-popper-arrow></div>
+        </div>
+        
       </div>
-    </div>
+    </button>
+
+
 
     <div class="flex relative pb-8 sm:items-center md:w-2/3 mx-auto">
       <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
