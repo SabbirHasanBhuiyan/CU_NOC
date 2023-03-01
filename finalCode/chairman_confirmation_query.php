@@ -36,8 +36,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $sqlQuery3="UPDATE `evaluates` SET `status` = 'Approved', `evaluation_time` = CURRENT_TIME(), `comment` = '$comment' WHERE `evaluates`.`Evaluation_type` = 'Chairman' AND `evaluates`.`Leave_ID` = '$id2' AND `evaluates`.`applicant_id` = '$app_id'";
 
         $result3= mysqli_query($connection,$sqlQuery3);
-
-        require('generate_my_application_chairman.php');
+        
+        require('generate_my_application_registrar.php');
 
         // Query For Sending Mail 
 

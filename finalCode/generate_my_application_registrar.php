@@ -13,7 +13,7 @@ $dompdf->setPaper("A4","portrait");
 $html_file=file_get_contents("basic_noc_application.html");
 
 include 'db_connect.php';
-
+$leave_id=$id2;
 
 $details_finding_query="SELECT * from study_leave_application where Leave_ID='$leave_id' ";
 $details_finding_result= mysqli_query($connection,$details_finding_query);
