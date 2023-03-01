@@ -18,7 +18,7 @@ echo '<nav class=" navbar bg-base-100 bg-gradient-to-r from-blue-500 to-white px
   echo '  <div class="flex items-center md:order-2 ">
     <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
       <span class="sr-only">Open user menu</span>
-      <img class="w-9 h-8 rounded-full " src="./images/user.png" alt="">
+      <img class="w-8 h-8 rounded-full " src="./images/user.png" alt="">
     </button>
     <!-- Dropdown menu -->
     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -35,10 +35,7 @@ echo '<nav class=" navbar bg-base-100 bg-gradient-to-r from-blue-500 to-white px
       </div>
       <ul class="py-2" aria-labelledby="user-menu-button">
         <li>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-        </li>
-        <li>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+          <a href="index.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
         </li>
         <li>
           <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</a>
