@@ -8,6 +8,10 @@
   $VCApproval=0;
   $registerFinalApproval=0;
   $higherStudyBranchFinalApproval=0;
+  $numOFDept=0;
+  $assaignedDepartments=array(
+    array('Evaluation_type' => '', 'status' => '')
+  );
 
   include 'db_connect.php';
 
@@ -34,6 +38,21 @@
         if(!empty($application) && $application['status']=="Approved"){ //Higher Study Branch Primary Approval check
           $higherStudyPrimaryApproval=2;
           $assignedToDept=1;
+
+          /* Assaigned depatments*/
+          $departments = array("AccountsController", "Librarian", "College" , "ExamController" , "PrimeEngineer" , "Director" , "SubRegister" , "DeputyRegister" , "DeputyRegisterHidden");
+            
+          foreach($departments as $department){
+              $sqlQuery="SELECT Evaluation_type,status from evaluates where (leave_id='$Leave_ID' and Evaluation_type='$department')";
+              $result= mysqli_query($connection,$sqlQuery);
+              $res = mysqli_fetch_assoc($result);
+
+              mysqli_free_result($result);
+              if(!empty($res)){
+                $numOFDept++;
+                $assaignedDepartments[]=$res;
+              }
+          }
 
           $sql="SELECT status FROM evaluates where Leave_ID=$Leave_ID and Evaluation_type='Assigned To Different Departments' " ;
           $result=mysqli_query($connection,$sql);
@@ -90,5 +109,4 @@
     mysqli_free_result($result);
     mysqli_close($connection);
   }
-
 ?>

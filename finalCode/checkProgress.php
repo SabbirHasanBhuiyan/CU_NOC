@@ -111,8 +111,31 @@
         <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Assigned To Different Department CU</h2>
         </div>
+        
+        <!---------------------------POP OVER CODE ------------------------>
+        
+        <?php if($numOFDept!=0){ ?>
+        <div data-popover id="popover-user-profile" role="tooltip" class="border-solid border-2 border-indigo-600 absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 right-0 focus:outline-none">
+          <div class="block m-4 ">
+            <div class="mt-2 flex flex-col gap-4">
+              <?php foreach($assaignedDepartments as $assaignedDepartment){ ?>
+                  <?php if(!empty($assaignedDepartment['Evaluation_type'])){ ?>
+                <label class="inline-flex items-center">
+                <input [type=checkbox]:disabled class="w-6 h-6 rounded-full <?php if( $assaignedDepartment['status']=='Pending'){ ?> bg-yellow-300 <?php }else{ ?> bg-green-300 <?php } ?> " />
+                  <span class="ml-2 text-xl font-bold text-indigo-500"><?php echo $assaignedDepartment['Evaluation_type'] ?></span>
+                </label>
+                <?php } ?>
+              <?php } ?>
+            </div>
+          </div>
+          <div data-popper-arrow></div>
+        </div>
+        
+        <?php } ?>
       </div>
-    </div>
+    </button>
+
+
 
     <div class="flex relative pb-8 sm:items-center md:w-2/3 mx-auto">
       <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
