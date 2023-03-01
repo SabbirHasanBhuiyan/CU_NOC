@@ -53,6 +53,7 @@
   <!-- option two for color balls -->
 
   <?php require 'checkProgressQuery.php' ?>
+  <?php require 'generate-pdf.php' ?>
 <section class="">
   <div class="fixed inset-y-0 right-20">
     <div class="h-full flex flex-col items-center justify-center">

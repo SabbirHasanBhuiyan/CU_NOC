@@ -1,11 +1,12 @@
 <?php 
+
 require (__DIR__ . '/dompdf/vendor/autoload.php');
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
 $options=new Options;
 $options->setChroot(__DIR__);
-
+if($higherStudyBranchFinalApproval==2){
 $dompdf= new Dompdf($options);
 
 $dompdf->setPaper("A4","portrait");
@@ -13,7 +14,8 @@ $dompdf->setPaper("A4","portrait");
 $html_file=file_get_contents("final_noc_application.html");
 
 include 'db_connect.php';
-$leave_id='53556121';
+
+$leave_id=$Leave_ID;
 $details_finding_query="SELECT * from study_leave_application where Leave_ID='$leave_id' ";
 $details_finding_result= mysqli_query($connection,$details_finding_query);
 $details_finding_row=mysqli_fetch_assoc($details_finding_result);
@@ -61,6 +63,7 @@ $pname = rand(1000, 10000) . "-" . "noc_application.pdf";
 $destdir='pdf/';
 
 file_put_contents($destdir.$pname,$output);
+}
    
 
 
