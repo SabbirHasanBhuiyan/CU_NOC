@@ -12,12 +12,12 @@ $mail=new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host="smtp.gmail.com";
 $mail->SMTPAuth=true;
-$mail->Username= 'projectnoc.cu@gmail.com';
-$mail->Password='ychqfigeodvhcmsb';
+$mail->Username= 'projectnoc05@gmail.com';
+$mail->Password='ztzwkvcfjgoxvfrf';
 $mail->SMTPSecure='ssl';
 $mail->Port=465;
 
-$mail->setFrom('projectnoc.cu@gmail.com');
+$mail->setFrom('projectnoc05@gmail.com');
 
 
 ?>
