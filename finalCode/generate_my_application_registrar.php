@@ -63,7 +63,7 @@ $html_file=str_replace("{{program end time}}",$program_end_date, $html_file);
 $html_file=str_replace("{{Designation}}",$designation, $html_file);
 $html_file=str_replace("{{joining date}}",$joining_date, $html_file);
 $html_file=str_replace("{{Attachments}}",$Attachments, $html_file);
-
+$html_file=str_replace("{{Comment}}",$comment, $html_file);
 
     $dompdf->loadHtml($html_file);
 $dompdf->render();

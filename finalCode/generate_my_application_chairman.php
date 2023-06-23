@@ -10,7 +10,7 @@ $dompdf= new Dompdf($options);
 
 $dompdf->setPaper("A4","portrait");
 
-$html_file=file_get_contents("basic_noc_application.html");
+$html_file=file_get_contents("basic_noc_application_chairman.html");
 
 include 'db_connect.php';
 
